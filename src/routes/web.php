@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
+    return view('welcome');
 });
 
 Route::post('upload', 'ImageController@upload')->name('upload');

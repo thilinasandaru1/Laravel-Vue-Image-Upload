@@ -13,5 +13,9 @@ class ImageController extends Controller
             $imagename = $request->image->getClientOriginalName();
             $request->image->storeAs('public', $imagename);
         }
+
+        $request->user()->avatar = $imagename;
+        $request->user()->save();
+        return back();
     }
 }
