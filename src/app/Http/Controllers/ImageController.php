@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ImageRequest;
 
 class ImageController extends Controller
 {
-    public function upload(Request $request)
+    public function upload(ImageRequest $request)
     {
         if($request->hasFile('image'))
         {

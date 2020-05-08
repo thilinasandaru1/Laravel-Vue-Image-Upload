@@ -9,19 +9,24 @@
     <body>
         <div id="app">
             <div class="container col-lg-offset-4 col-lg-4 pt-5">
-                <form
-                    action="{{ route('upload') }}"
-                    enctype="multipart/form-data"
-                    method="POST"
-                >
-                    @csrf
-                    <input type="file" name="image" />
-                    <input
-                        type="submit"
-                        class="btn btn-success"
-                        value="upload"
-                    />
-                </form>
+                <div class="row">
+                    @if(count($errors)) @foreach($errors->all() as $error)
+                    <span class="text-danger">{{ $error }}</span>
+                    @endforeach @endif
+                    <form
+                        action="{{ route('upload') }}"
+                        enctype="multipart/form-data"
+                        method="POST"
+                    >
+                        @csrf
+                        <input type="file" name="image" />
+                        <input
+                            type="submit"
+                            class="btn btn-success"
+                            value="upload"
+                        />
+                    </form>
+                </div>
             </div>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
