@@ -10,7 +10,8 @@ class ImageController extends Controller
     {
         if($request->hasFile('image'))
         {
-            $request->image->store('public');
+            $imagename = $request->image->getClientOriginalName();
+            $request->image->storeAs('public', $imagename);
         }
     }
 }
