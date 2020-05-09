@@ -18,4 +18,16 @@ class ImageController extends Controller
         $request->user()->save();
         return back();
     }
+
+    public function saveImage(ImageRequest $request)
+    {
+        if($request->hasFile('image'))
+        {
+            $imagename = $request->image->getClientOriginalName();
+            $request->image->storeAs('public', $imagename);
+            $request->user()->update(['avatar' => $imagename]);
+            return response(null, 202);
+        }
+
+    }
 }
